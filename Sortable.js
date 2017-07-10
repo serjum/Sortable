@@ -261,7 +261,8 @@
       fallbackClass: 'sortable-fallback',
       fallbackOnBody: false,
       fallbackTolerance: 0,
-      fallbackOffset: {x: 0, y: 0}
+      fallbackOffset: {x: 0, y: 0},
+      isAngular: false
     };
 
 
@@ -872,6 +873,7 @@
     },
 
     _onDrop: function (/**Event*/evt) {
+      // debugger;
       var el = this.el,
         options = this.options;
 
@@ -921,6 +923,9 @@
             newIndex = _index(dragEl, options.draggable);
 
             if (newIndex >= 0) {
+              if (this.options.isAngular) {
+                dragEl.parentNode.removeChild(dragEl);
+              }
               // Add event
               _dispatchEvent(null, parentEl, 'add', dragEl, rootEl, oldIndex, newIndex);
 
@@ -934,6 +939,9 @@
           }
           else {
             if (dragEl.nextSibling !== nextEl) {
+              if (this.options.isAngular) {
+                dragEl.parentNode.removeChild(dragEl);
+              }
               // Get the index of the dragged element within its parent
               newIndex = _index(dragEl, options.draggable);
 
