@@ -939,9 +939,6 @@
           }
           else {
             if (dragEl.nextSibling !== nextEl) {
-              if (this.options.isAngular) {
-                dragEl.parentNode.removeChild(dragEl);
-              }
               // Get the index of the dragged element within its parent
               newIndex = _index(dragEl, options.draggable);
 
@@ -1494,6 +1491,6 @@
 
 
   // Export
-  Sortable.version = '1.6.0';
+  Sortable.version = '1.6.1';
   return Sortable;
 });
