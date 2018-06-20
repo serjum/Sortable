@@ -176,6 +176,7 @@
       }
     }, 30),
 
+
     _prepareGroup = function (options) {
       function toFn(value, pull) {
         if (value === void 0 || value === true) {
@@ -262,7 +263,7 @@
       fallbackOnBody: false,
       fallbackTolerance: 0,
       fallbackOffset: {x: 0, y: 0},
-      isAngular: false
+      isAngular: true
     };
 
 
@@ -873,7 +874,7 @@
     },
 
     _onDrop: function (/**Event*/evt) {
-      // debugger;
+
       var el = this.el,
         options = this.options;
 
@@ -1450,6 +1451,13 @@
     }
   });
 
+
+  function _clearScroll(root) {
+      console.log(autoScroll);
+      clearInterval(autoScroll.pid);
+  }
+
+
   try {
     window.addEventListener('test', null, Object.defineProperty({}, 'passive', {
       get: function () {
@@ -1476,7 +1484,8 @@
     closest: _closest,
     toggleClass: _toggleClass,
     clone: _clone,
-    index: _index
+    index: _index,
+    clearScroll: _clearScroll
   };
 
 
